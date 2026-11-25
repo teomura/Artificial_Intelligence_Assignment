@@ -6,7 +6,7 @@ namespace SalvageSprint.Core
     // Delivery is supplied so the unmodified game has a complete scoring loop.
     public static class DecisionPolicy
     {
-        public const string Label = "Part 1 starter: nearest candidate";
+        public const string Label = "Teodora";
 
         public static AgentFacts Infer(Observation observation)
         {
@@ -18,7 +18,12 @@ namespace SalvageSprint.Core
             foreach (Candidate candidate in observation.Candidates)
             {
                 // Deliberately naive: ignores Visible, Remembered and Blocked.
-                if (candidate.Available && candidate.DistanceSquared < distance)
+                if (!(candidate.Visible || candidate.Remembered)) 
+                {
+                    continue;
+                }
+
+                if (candidate.Available && candidate.DistanceSquared < distance) /*&& candidate.Blocked && candidate.Visible*/ // addded visibility and blocked to the decision
                 { nearest = candidate.Id; distance = candidate.DistanceSquared; }
             }
             return new AgentFacts(false, nearest, false);
