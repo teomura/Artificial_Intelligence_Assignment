@@ -5,13 +5,14 @@ Keep this short. Bullet points, a small table and one diagram or code trace are 
 Name: Teodora Murariu
 Exact Unity version: 6.3.26f1
 Checkpoint commit / repository: https://github.com/teomura/Artificial_Intelligence_Assignment
-Current stage and anything unfinished: Stage 1
+Current stage and anything unfinished: Stage 2
 
 ## Initial prediction
 
 Three observations the rival needs, including one it might not have:
 
-- to have a cargo target depot
+
+- to have a cargo target to pick up 
 - to have a way to "see" targets
 - to be able to prioritise reachable instead of exclusively the closest one 
 
@@ -55,11 +56,11 @@ Starts repeating same instructions and results as frame one and then frame two.
 | Scenario | Predicted result | Observed result and short evidence / remaining issue |
 |---|---|---|
 | Normal loop and restart | Collect scrap | Prioritises distance |
-| Carrying cargo | | |
-| Hidden / remembered pickup | | |
-| Target taken | | |
-| Unreachable target | | |
-| No usable pickup | | |
+| Carrying cargo | Deliver cargo | If the path is blocked it fails to deliver |
+| Hidden / remembered pickup | Collect remembered pickup | Goes to remembered cargo but if closer cargo becomes visible, it goes to that instead |
+| Target taken | Find new target | it finds a new one but stops after picking it up |
+| Unreachable target | Find new target | blocked in a 6s waiting loop|
+| No usable pickup | Explore | if depo is visible it returs to it; it it's not visible it gets stuck in a loop |
 
 Supplied test result, with any added tests identified:
 Live walkthrough checked by / recording link if used:
@@ -72,6 +73,6 @@ My counterexample or experiment: prediction, observed result, and one limitation
 
 ## Collaboration and help
 
-People I discussed or playtested with:
+People I discussed or playtested with: Charlie, Midas, Simon
 Code, sources or substantive tools/AI assistance I used, and how I verified them:
 If unfinished: what works, exact reproduction steps, and the help I need:
