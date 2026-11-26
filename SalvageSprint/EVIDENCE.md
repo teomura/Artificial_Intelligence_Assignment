@@ -26,7 +26,8 @@ One question about NPC behaviour:
 
 ## One complete trace
 
-Use one actual situation. Include the observation data, derived facts, selected task and reason, movement request/result, and how feedback affects a later decision. Identify the responsible code locations. A tiny state diagram can accompany this trace.
+Use one actual situation. Include the observation data, derived facts, selected task and reason, movement request/result, and how feedback affects a later decision.
+Identify the responsible code locations. A tiny state diagram can accompany this trace.
 
 Unreachable closest target. 
 
@@ -74,5 +75,6 @@ My counterexample or experiment: prediction, observed result, and one limitation
 ## Collaboration and help
 
 People I discussed or playtested with: Charlie, Midas, Simon
+
 Code, sources or substantive tools/AI assistance I used, and how I verified them:
 If unfinished: what works, exact reproduction steps, and the help I need:

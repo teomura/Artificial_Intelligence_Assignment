@@ -18,13 +18,18 @@ namespace SalvageSprint.Core
             foreach (Candidate candidate in observation.Candidates)
             {
                 // Deliberately naive: ignores Visible, Remembered and Blocked.
-                if (!(candidate.Visible || candidate.Remembered)) 
+                if (!(candidate.Visible || candidate.Remembered)) // added visibility and remembered to the decision
                 {
                     continue;
                 }
 
-                if (candidate.Available && candidate.DistanceSquared < distance) /*&& candidate.Blocked && candidate.Visible*/ // addded visibility and blocked to the decision
+                if (candidate.Available && candidate.DistanceSquared < distance) 
                 { nearest = candidate.Id; distance = candidate.DistanceSquared; }
+
+                if (candidate.Blocked)
+                {
+                    return new AgentFacts(false, -1, true);// keeps it on explore
+                }
             }
             return new AgentFacts(false, nearest, false);
         }
